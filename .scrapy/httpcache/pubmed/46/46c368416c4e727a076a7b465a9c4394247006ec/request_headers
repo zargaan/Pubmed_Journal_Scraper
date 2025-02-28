@@ -1,0 +1,10 @@
+Referer: https://pubmed.ncbi.nlm.nih.gov/?term=machine+learning
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36
+Cookie: pm-csrf=7U2X3Nshft9BqCqV0JgMvpeCn0kIA3dD; pm-sessionid=ej78ch7qctmu24lz01cs37jgt27iut9q; pm-sid=FK8i0S4ZByuEhxHUPEp7zA:e04d1bcee667afb8622501b9a4b4654d; pm-adjnav-sid=axwtLIPl8TdzdWl0CgPRWg:e04d1bcee667afb8622501b9a4b4654d; ncbi_sid=A55F15667B721A53_39624SID
