@@ -3,9 +3,16 @@
 [![Scrapy](https://img.shields.io/badge/Scrapy-2.11%2B-red)](https://scrapy.org/)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://python.org)
 
-Advanced web scraper untuk ekstrak artikel jurnal dari PubMed dengan teknik anti-blokir dan manajemen halaman otomatis.
+Proyek ini bertujuan untuk mengumpulkan data judul Artikel dari situs web PubMed dengan teknik menggunakan teknik scrapy dan manajemen halaman otomatis.
+
+**Nama Kelompok :**
+1. Agato Uria Oidamar Prawira
+2. Ndaniel Mahulae
+3. Aracel Nestova Aprilyanto
 
 ## 📌 Daftar Isi
+- [Sumber_Data](#-sumber_data)
+- [Struktur Direktori](#-struktur-direktori-pubmed_journal_scraper)
 - [Fitur](#-fitur)
 - [Instalasi](#-instalasi)
 - [Penggunaan](#-penggunaan)
@@ -14,6 +21,91 @@ Advanced web scraper untuk ekstrak artikel jurnal dari PubMed dengan teknik anti
 - [Troubleshooting](#-troubleshooting)
 - [Etika](#-etika)
 - [Lisensi](#-lisensi)
+
+---
+
+## Sumber_data
+Website : [PubMed](https://pubmed.ncbi.nlm.nih.gov/)
+
+---
+
+## Struktur-direktori-pubmed_journal_scraper
+
+```plaintext
+📦.scrapy
+ ┗ 📂httpcache
+ ┃ ┗ 📂pubmed
+ ┃ ┃ ┣ 📂13
+ ┃ ┃ ┃ ┗ 📂13a154ffd71c93895a679f8f50ea428c140958af
+ ┃ ┃ ┃ ┃ ┣ 📜meta
+ ┃ ┃ ┃ ┃ ┣ 📜pickled_meta
+ ┃ ┃ ┃ ┃ ┣ 📜request_body
+ ┃ ┃ ┃ ┃ ┣ 📜request_headers
+ ┃ ┃ ┃ ┃ ┣ 📜response_body
+ ┃ ┃ ┃ ┃ ┗ 📜response_headers
+ ┃ ┃ ┣ 📂26
+ ┃ ┃ ┃ ┗ 📂26bfa22f4171e6f75c0561e84ccc0b840e50188d
+ ┃ ┃ ┃ ┃ ┣ 📜meta
+ ┃ ┃ ┃ ┃ ┣ 📜pickled_meta
+ ┃ ┃ ┃ ┃ ┣ 📜request_body
+ ┃ ┃ ┃ ┃ ┣ 📜request_headers
+ ┃ ┃ ┃ ┃ ┣ 📜response_body
+ ┃ ┃ ┃ ┃ ┗ 📜response_headers
+ ┃ ┃ ┣ 📂30
+ ┃ ┃ ┃ ┗ 📂30834863ccc621103b7ac34a8827fa456d99564c
+ ┃ ┃ ┃ ┃ ┣ 📜meta
+ ┃ ┃ ┃ ┃ ┣ 📜pickled_meta
+ ┃ ┃ ┃ ┃ ┣ 📜request_body
+ ┃ ┃ ┃ ┃ ┣ 📜request_headers
+ ┃ ┃ ┃ ┃ ┣ 📜response_body
+ ┃ ┃ ┃ ┃ ┗ 📜response_headers
+ ┃ ┃ ┣ 📂46
+ ┃ ┃ ┃ ┗ 📂46c368416c4e727a076a7b465a9c4394247006ec
+ ┃ ┃ ┃ ┃ ┣ 📜meta
+ ┃ ┃ ┃ ┃ ┣ 📜pickled_meta
+ ┃ ┃ ┃ ┃ ┣ 📜request_body
+ ┃ ┃ ┃ ┃ ┣ 📜request_headers
+ ┃ ┃ ┃ ┃ ┣ 📜response_body
+ ┃ ┃ ┃ ┃ ┗ 📜response_headers
+ ┃ ┃ ┣ 📂52
+ ┃ ┃ ┃ ┗ 📂522cb827f0b18deb30c7b40ff9786edda1aa2552
+ ┃ ┃ ┃ ┃ ┣ 📜meta
+ ┃ ┃ ┃ ┃ ┣ 📜pickled_meta
+ ┃ ┃ ┃ ┃ ┣ 📜request_body
+ ┃ ┃ ┃ ┃ ┣ 📜request_headers
+ ┃ ┃ ┃ ┃ ┣ 📜response_body
+ ┃ ┃ ┃ ┃ ┗ 📜response_headers
+ ┃ ┃ ┗ 📂e8
+ ┃ ┃ ┃ ┗ 📂e8fcbc4cf8a8a53f568674cb09615f94b1df8f42
+ ┃ ┃ ┃ ┃ ┣ 📜meta
+ ┃ ┃ ┃ ┃ ┣ 📜pickled_meta
+ ┃ ┃ ┃ ┃ ┣ 📜request_body
+ ┃ ┃ ┃ ┃ ┣ 📜request_headers
+ ┃ ┃ ┃ ┃ ┣ 📜response_body
+ ┃ ┃ ┃ ┃ ┗ 📜response_headers
+📦journal_scraper
+ ┣ 📂spiders
+ ┃ ┣ 📂__pycache__
+ ┃ ┃ ┣ 📜pubmed.cpython-313.pyc
+ ┃ ┃ ┗ 📜__init__.cpython-313.pyc
+ ┃ ┣ 📜pubmed.py
+ ┃ ┗ 📜__init__.py
+ ┣ 📂__pycache__
+ ┃ ┣ 📜pipelines.cpython-313.pyc
+ ┃ ┣ 📜settings.cpython-313.pyc
+ ┃ ┗ 📜__init__.cpython-313.pyc
+ ┣ 📜items.py
+ ┣ 📜middlewares.py
+ ┣ 📜pipelines.py
+ ┣ 📜settings.py
+ ┗ 📜__init__.py
+ 📦.gitattributes
+ 📦ai_hasil.csv
+ 📦cysec_hasil.csv
+ 📦is_hasil.csv
+ 📦ml_hasil.csv
+ 📦scrapy.cfg
+```
 
 ---
 
