@@ -5,10 +5,10 @@
 
 Proyek ini bertujuan untuk mengumpulkan data judul Artikel dari situs web PubMed dengan teknik menggunakan teknik scrapy dan manajemen halaman otomatis.
 
-**Nama Kelompok :**
-1. Agato Uria Oidamar Prawira
-2. Ndaniel Mahulae
-3. Aracel Nestova Aprilyanto
+**Anggota Kelompok :**
+1. Agato Uria Oidamar Prawira - 225150407111062
+2. Ndaniel Mahulae	-	225150300111016
+3. Aracel Nestova Aprilyanto	- 225150200111054
 
 ## 📌 Daftar Isi
 - [Sumber_Data](#-sumber_data)
@@ -20,6 +20,7 @@ Proyek ini bertujuan untuk mengumpulkan data judul Artikel dari situs web PubMed
 - [Output](#-output)
 - [Troubleshooting](#-troubleshooting)
 - [Etika](#-etika)
+- [Preprocessing](#-preprocessing)
 - [Lisensi](#-lisensi)
 
 ---
@@ -149,7 +150,8 @@ pip install -r requirements.txt
 
 ### Scrape Default (5 Halaman)
 ```bash
-scrapy crawl pubmed -o hasil.json
+scrapy crawl pubmed -o hasil.json # Output JSON
+scrapy crawl pubmed -o hasil.csv # Output CSV
 ```
 
 ### Scrape dengan Parameter Kustom
@@ -159,7 +161,7 @@ scrapy crawl pubmed -s MAX_PAGES=10 -s DOWNLOAD_DELAY=5 -o hasil.json
 ```
 
 ### Modifikasi Kata Kunci
-Edit `pubmed_spider.py`:
+Edit `pubmed.py`:
 ```python
 start_urls = ['https://pubmed.ncbi.nlm.nih.gov/?term=your_keyword_here']
 ```
@@ -177,6 +179,7 @@ start_urls = ['https://pubmed.ncbi.nlm.nih.gov/?term=your_keyword_here']
 
 ## 📄 Contoh Output
 ```json
+# JSON
 {
   "title": "AI in Cancer Diagnosis: A Systematic Review",
   "authors": "Zhang L, Smith J, Lee K, et al",
@@ -189,6 +192,15 @@ start_urls = ['https://pubmed.ncbi.nlm.nih.gov/?term=your_keyword_here']
   "page": 7,
   "url": "https://pubmed.ncbi.nlm.nih.gov/36624315/"
 }
+```
+```csv
+# CSV
+title,authors,journal,pmid,page,url
+A guide to machine learning for biologists.,"Greener JG, Kandathil SM, Moffat L, Jones DT.","{'name': 'Nat Rev Mol Cell Biol', 'year': 2022, 'citation': 'Nat Rev Mol Cell Biol. 2022 Jan;23(1):40-55. doi: 10.1038/s41580-021-00407-0. Epub 2021 Sep 13.'}",34518686,1,https://pubmed.ncbi.nlm.nih.gov/34518686/
+"Introduction to Machine Learning, Neural Networks, and Deep Learning.","Choi RY, Coyner AS, Kalpathy-Cramer J, Chiang MF, Campbell JP.","{'name': 'Transl Vis Sci Technol', 'year': 2020, 'citation': 'Transl Vis Sci Technol. 2020 Feb 27;9(2):14. doi: 10.1167/tvst.9.2.14.'}",32704420,1,https://pubmed.ncbi.nlm.nih.gov/32704420/
+Machine Learning in Medicine.,Deo RC.,"{'name': 'Circulation', 'year': 2015, 'citation': 'Circulation. 2015 Nov 17;132(20):1920-30. doi: 10.1161/CIRCULATIONAHA.115.001593.'}",26572668,1,https://pubmed.ncbi.nlm.nih.gov/26572668/
+eDoctor: machine learning and the future of medicine.,"Handelman GS, Kok HK, Chandra RV, Razavi AH, Lee MJ, Asadi H.","{'name': 'J Intern Med', 'year': 2018, 'citation': 'J Intern Med. 2018 Dec;284(6):603-619. doi: 10.1111/joim.12822. Epub 2018 Sep 3.'}",30102808,1,https://pubmed.ncbi.nlm.nih.gov/30102808/
+Supervised Machine Learning: A Brief Primer.,"Jiang T, Gradus JL, Rosellini AJ.","{'name': 'Behav Ther', 'year': 2020, 'citation': 'Behav Ther. 2020 Sep;51(5):675-687. doi: 10.1016/j.beth.2020.05.002. Epub 2020 May 16.'}",32800297,1,https://pubmed.ncbi.nlm.nih.gov/32800297/
 ```
 
 ---
@@ -230,6 +242,14 @@ ROTATING_PROXY_LIST = [
 - **Patuhi** `robots.txt` PubMed
 - **Cache hasil secara lokal** untuk mengurangi request
 - **Hindari scraping data pribadi**
+
+---
+
+## 🔍 Preprocessing
+Proses pembersihan data dilakukan sebelum data disimpan:
+- **Clean Text:** Menghapus spasi berlebih, newline, dan karakter tidak relevan pada judul.
+- **Clean Authors:** Menghapus tanda "et al.", ellipsis, dan pemisah seperti titik koma pada daftar penulis.
+- **Parse Journal:** Memisahkan nama jurnal, tahun publikasi, dan kutipan lengkap menggunakan regex.
 
 ---
 
