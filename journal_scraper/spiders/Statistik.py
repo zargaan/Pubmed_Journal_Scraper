@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy 
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 import nltk
@@ -7,6 +8,9 @@ from nltk.tokenize import word_tokenize
 import string
 import re
 from collections import Counter
+from transformers import BertTokenizer, BertModel
+import torch
+
 
 dataAI = pd.read_json('Hasil Scraping\scraping_hasil.json')
 
@@ -77,4 +81,23 @@ if filtered_word_freq:
         plt.show()
 else:
     print("No Match")
+
+#Representasi teks
+
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+model = BertModel.from_pretrained('bert-base-uncased')
+
+# Menyiapkan teks untuk BERT
+inputs = tokenizer(' '.join(filtered_words), return_tensors='pt', truncation=True, padding=True)
+
+# Mendapatkan embeddings dari BERT
+with torch.no_grad():
+    outputs = model(**inputs)
+
+# Mendapatkan embeddings untuk token pertama (representasi [CLS])
+embedding = outputs.last_hidden_state[0][0].numpy()
+
+# Menyimpan embedding ke dalam file .txt
+numpy.savetxt('Hasil_embed.txt', embedding)
+
 
