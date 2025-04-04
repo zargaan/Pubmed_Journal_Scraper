@@ -1,0 +1,24 @@
+services:
+  scraping-api:
+    build: ./API_scraping
+    image: scraping-api  # Tambahkan nama image eksplisit
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - FLASK_ENV=development
+
+  preprocessing-api:
+    build: ./API_preprocessed
+    image: preprocessing-api  # Tambahkan nama image eksplisit
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - scraping-api
+
+networks:
+  scraper-net:
+    driver: bridge
