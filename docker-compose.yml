@@ -1,25 +1,29 @@
 services:
   scraping-api:
     build:
-      context: ./API_scraping
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: API_Scraping/Dockerfile
     image: pubmed-scraping-api
     ports:
       - "5000:5000"
     volumes:
-      - ./data:/app/data
+      - ./shared/data:/app/data
+      - ./Hasil Scraping:/app/shared_data
     environment:
       - FLASK_ENV=development
 
   preprocessing-api:
     build:
-      context: ./API_preprocessed
-      dockerfile: Dockerfile
-    image: pubmed-preprocessing-api
+      context: .
+      dockerfile: API_preprocessed/Dockerfile
+    volumes:
+      - ./shared/data:/app/data
+      - ./journal_scraper:/app/journal_scraper
+      - ./Hasil Scraping:/app/shared_data
+    
     ports:
       - "5001:5001"
-    volumes:
-      - ./data:/app/data
+
     depends_on:
       - scraping-api
 

@@ -1,7 +1,8 @@
 FROM python:3.9-slim
 WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
-RUN mkdir -p /app/data
+
+COPY API_preprocessed/ ./
+COPY Hasil_embed.txt ./Hasil_embed.txt
+RUN pip install --no-cache-dir --timeout=1000 -r requirements.txt
+RUN mkdir -p /app/models
 CMD ["python", "app.py"]
