@@ -1,0 +1,21 @@
+# Folder Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# File log dan cache sementara
+*.log
+*.tmp
+*.swp
+
+# Virtualenv lokal
+venv/
+env/
+
+# Git repo & editor
+.git/
+.gitignore
+.vscode/
+.idea/
+
+*.csv
