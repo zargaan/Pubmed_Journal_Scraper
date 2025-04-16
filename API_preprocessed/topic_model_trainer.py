@@ -1,17 +1,40 @@
 from bertopic import BERTopic
 import pandas as pd
 import joblib
+from gensim.models import CoherenceModel
+from gensim.corpora import Dictionary
+from gensim.utils import simple_preprocess  # Untuk preprocessing dasar
 
 def train_model(documents):
-    # Train model
+    # Preprocessing untuk gensim
+    processed_docs = [simple_preprocess(doc) for doc in documents]  # Tokenisasi + lowercase
+    dictionary = Dictionary(processed_docs)
+    
+    # Train model BERTopic
     topic_model = BERTopic()
     topics, _ = topic_model.fit_transform(documents)
 
-    # Evaluate (coherence score belum built-in, tapi bisa pakai alternatif)
-    # Untuk simpel, kita pakai jumlah topik
-    n_topics = len(set(topics))
+    # Persiapkan topik untuk coherence score
+    topic_words = []
+    for topic_id in range(len(set(topics))-1):  # Exclude outlier topic (-1)
+        words = [word for word, _ in topic_model.get_topic(topic_id)]
+        topic_words.append(words)
 
-    # Save model
+    # Hitung coherence score
+    coherence_model = CoherenceModel(
+        topics=topic_words,
+        texts=processed_docs,  # Gunakan texts yang sudah diproses
+        dictionary=dictionary,
+        coherence='c_v'
+    )
+    coherence_score = coherence_model.get_coherence()
+
+    # Simpan model
     joblib.dump(topic_model, 'models/bertopic_model.pkl')
 
-    return {"n_topics": n_topics}
+    n_topics = len([t for t in set(topics) if t != -1])
+
+    return {
+        "n_topics" : n_topics,
+        "coherence_score": coherence_score
+    }

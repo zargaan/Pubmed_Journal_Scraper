@@ -20,8 +20,9 @@ nltk.download('punkt')
 nltk.download('stopwords')
 
 class DataProcessor:
-    def __init__(self, data_path='Hasil Scraping/scraping_hasil.json'):
-        self.data_path = data_path
+    def __init__(self, data_path=None):
+        
+        self.data_path = data_path or 'shared_data/scraping_hasil.json'
         self.data = None
         self.filtered_words = []
         self.keyword_counts = {}
@@ -114,8 +115,10 @@ class DataProcessor:
             'status': 'success',
             'word_count': len(self.filtered_words),
             'unique_words': len(set(self.filtered_words)),
-            'embedding_shape': self.embedding.shape if self.embedding is not None else None
+            'embedding_shape': self.embedding.shape if self.embedding is not None else None,
+            'filtered_text': " ".join(self.filtered_words) 
         }
+
 
     def get_basic_stats(self):
         """Return basic statistics"""
