@@ -24,7 +24,12 @@ EMBEDDING_PATH = 'Hasil_embed.txt'
 def get_wordcloud():
     """Endpoint untuk wordcloud hasil preprocessing"""
     try:
-        text = processor.process_all()
+        result = processor.process_all()
+
+        text = result.get("filtered_text", "")
+
+        if not isinstance(text, str):
+            return jsonify({'error': 'filtered_text bukan string'}), 500
 
         wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
         
@@ -64,18 +69,23 @@ def get_embeddings():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
-@app.route('/api/preprocessed/train-topic-model', methods=['POST'])
+@app.route('/api/preprocessed/training', methods=['POST'])
 def train_topic():
     try:
         with open("shared_data/scraping_hasil.json") as f:
             raw_data = json.load(f)
 
         # Ambil teks dari data (asumsi datanya list of dict dengan key 'text')
-        documents = [entry['text'] for entry in raw_data]
+        documents = [entry['title'] for entry in raw_data]
 
         result = train_model(documents)
 
-        return jsonify({"message": "Training selesai", "jumlah_topik": result["n_topics"]})
+        return jsonify({
+            "message": "Training selesai",
+            "jumlah_topik": result["n_topics"],
+            "coherence_score": result["coherence_score"]
+        })
+    
     except Exception as e:
         return jsonify({'error': str(e)}), 500
     
