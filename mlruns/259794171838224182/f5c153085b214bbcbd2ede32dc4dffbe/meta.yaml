@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/danie/proyek/Pubmed_Journal_Scraper/mlruns/259794171838224182/f5c153085b214bbcbd2ede32dc4dffbe/artifacts
+end_time: 1745339228612
+entry_point_name: ''
+experiment_id: '259794171838224182'
+lifecycle_stage: active
+run_id: f5c153085b214bbcbd2ede32dc4dffbe
+run_name: whimsical-moose-466
+run_uuid: f5c153085b214bbcbd2ede32dc4dffbe
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1745339138992
+status: 3
+tags: []
+user_id: danie

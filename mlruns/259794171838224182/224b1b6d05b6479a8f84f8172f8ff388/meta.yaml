@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/danie/proyek/Pubmed_Journal_Scraper/mlruns/259794171838224182/224b1b6d05b6479a8f84f8172f8ff388/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '259794171838224182'
+lifecycle_stage: active
+run_id: 224b1b6d05b6479a8f84f8172f8ff388
+run_name: fun-boar-274
+run_uuid: 224b1b6d05b6479a8f84f8172f8ff388
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1745341584731
+status: 1
+tags: []
+user_id: danie

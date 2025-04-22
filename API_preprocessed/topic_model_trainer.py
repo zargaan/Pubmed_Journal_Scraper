@@ -1,6 +1,7 @@
 from bertopic import BERTopic
 import pandas as pd
 import joblib
+import json
 from gensim.models import CoherenceModel
 from gensim.corpora import Dictionary
 from gensim.utils import simple_preprocess  # Untuk preprocessing dasar
@@ -34,7 +35,11 @@ def train_model(documents):
 
     n_topics = len([t for t in set(topics) if t != -1])
 
-    return {
-        "n_topics" : n_topics,
+    metrics = {
+        "jumlah_topik": n_topics,
         "coherence_score": coherence_score
     }
+    with open("models/training_metrics.json", "w") as f:
+        json.dump(metrics, f, indent=4)
+
+    return metrics

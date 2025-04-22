@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/danie/proyek/Pubmed_Journal_Scraper/mlruns/259794171838224182/d70080271235419cb62ba1377ce88bbd/artifacts
+end_time: 1745341815348
+entry_point_name: ''
+experiment_id: '259794171838224182'
+lifecycle_stage: active
+run_id: d70080271235419cb62ba1377ce88bbd
+run_name: industrious-owl-965
+run_uuid: d70080271235419cb62ba1377ce88bbd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1745341699598
+status: 3
+tags: []
+user_id: danie
