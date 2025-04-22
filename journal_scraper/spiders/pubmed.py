@@ -3,9 +3,10 @@ import re
 from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
 
 class PubMedSpider(scrapy.Spider):
-    name = 'pubmed'
-    start_urls = ['https://pubmed.ncbi.nlm.nih.gov/?term=machine%20learning']
-    
+    name = 'pubmed_spider'
+    allowed_domains = ['pubmed.ncbi.nlm.nih.gov']
+    start_urls = ['https://pubmed.ncbi.nlm.nih.gov/?term=artificial+intelligence']
+
     custom_settings = {
         'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
         'DOWNLOAD_DELAY': 3,
@@ -14,6 +15,16 @@ class PubMedSpider(scrapy.Spider):
         'MAX_PAGES': 5,
         'CONCURRENT_REQUESTS': 1,
         'HTTPCACHE_ENABLED': False,
+        'FEED_EXPORT_ENCODING': 'utf-8',
+        'FEED_EXPORT_INDENT': 4,
+        'FEEDS': {
+            'shared_data/scraping_hasil.json': {
+                'format': 'json',
+                'encoding': 'utf-8',
+                'indent': 4,
+                'overwrite': True
+            }
+        },
         'DEFAULT_REQUEST_HEADERS': {
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
             'Accept-Language': 'en-US,en;q=0.5',
@@ -22,89 +33,70 @@ class PubMedSpider(scrapy.Spider):
         }
     }
 
-    def start_requests(self):
-        self.logger.info("🔥 Memulai scraping PubMed")
-        yield scrapy.Request(
-            url=self.start_urls[0],
-            callback=self.parse,
-            meta={'page_number': 1, 'max_pages': self.settings.getint('MAX_PAGES', 5)},
-            headers={'Referer': 'https://pubmed.ncbi.nlm.nih.gov/'}
-        )
-
     def parse(self, response):
-        current_page = response.meta['page_number']
-        max_pages = response.meta['max_pages']
-        
-        articles = response.css('.docsum-content')
-        self.logger.info(f"📖 Halaman {current_page} - Artikel ditemukan: {len(articles)}")
-
-        # Ekstraksi data
-        for result in articles:
-            yield self.parse_article(response, result, current_page)
-
-        # Pagination logic
-        if current_page < max_pages and len(articles) > 0:
-            next_page = current_page + 1
-            next_url = self.build_next_url(response.url, next_page)
+        articles = response.css('div.docsum-content')
+        for article in articles:
+            title_parts = article.css('a.docsum-title ::text').getall()
+            title = self.clean_text(title_parts)
             
-            self.logger.info(f"⏭ Membangun URL halaman {next_page}: {next_url}")
-            
-            yield response.follow(
-                next_url,
-                callback=self.parse,
-                meta={'page_number': next_page, 'max_pages': max_pages},
-                headers={'Referer': response.url},
-                errback=self.handle_error
-            )
+            meta_data = {
+                'title': title,
+                'authors': self.extract_authors(article),
+                'citation': article.css('span.docsum-journal-citation::text').get('').strip()
+            }
 
-    def build_next_url(self, current_url, next_page):
-        parsed = urlparse(current_url)
-        query = parse_qs(parsed.query)
-        
-        # Parameter paginasi yang benar untuk PubMed
-        query['page'] = [str(next_page)]
-        
-        # Bersihkan parameter yang mengganggu
-        for param in ['format', 'size', 'filter', 'start']:
-            query.pop(param, None)
-        
-        new_query = urlencode(query, doseq=True)
-        return urlunparse(parsed._replace(query=new_query))
+            detail_link = article.css('a.docsum-title::attr(href)').get()
+            full_url = response.urljoin(detail_link)
+            yield response.follow(full_url, callback=self.parse_detail, meta=meta_data)
 
-    def parse_article(self, response, selector, page):
-        return {
-            'title': self.clean_text(selector.css('.docsum-title ::text').getall()),
-            'authors': self.clean_authors(selector.css('.docsum-authors::text').get()),
-            'journal': self.parse_journal(selector.css('.docsum-journal-citation::text').get()),
-            'pmid': selector.css('.docsum-pmid::text').get('').strip(),
-            'page': page,
-            'url': response.urljoin(selector.css('a.docsum-title::attr(href)').get())
+        next_page = response.css('a.next-page::attr(href)').get()
+        if next_page:
+            yield response.follow(next_page, callback=self.parse)
+
+    def parse_detail(self, response):
+        item = {
+            'title': response.meta['title'],
+            'abstract': self.extract_abstract(response),
+            'authors': response.meta['authors'],
+            'journal_conference_name': self.extract_journal(response.meta['citation']),
+            'publisher': 'PubMed',
+            'year': self.extract_year(response.meta['citation']),
+            'doi': self.extract_doi(response),
+            'group_name': self.extract_group(response)
         }
+        yield item
 
     def clean_text(self, text_list):
         return ' '.join(''.join(text_list).split()).strip()
 
-    def clean_authors(self, authors):
-        if authors:
-            return re.sub(r'(\.\.\.|;|\bet al\b\.?)', '', authors).strip()
-        return ''
+    def extract_authors(self, article):
+        authors_text = article.css('span.docsum-authors.full-authors::text').get('')
+        return [a.strip() for a in authors_text.split(',') if a.strip()]
 
-    def parse_journal(self, journal_text):
-        if journal_text:
-            return {
-                'name': journal_text.split('.')[0],
-                'year': self.extract_year(journal_text),
-                'citation': journal_text.strip()
-            }
-        return {}
+    def extract_abstract(self, response):
+        paragraphs = response.css('div.abstract-content.selected p::text').getall()
+        return ' '.join([p.strip() for p in paragraphs if p.strip()]) or 'Unavailable'
 
-    def extract_year(self, text):
-        try:
-            match = re.search(r'\b(19|20)\d{2}\b', text)
-            return int(match.group()) if match else None
-        except:
-            return None
+    def extract_journal(self, citation):
+        return citation.split('.')[0].strip() if citation else 'Unavailable'
 
-    def handle_error(self, failure):
-        self.logger.error(f"🚨 Gagal memproses halaman: {failure.request.url}")
-        self.logger.error(f"🚨 Detail error: {repr(failure)}")
+    def extract_year(self, citation):
+        if match := re.search(r'\b(19|20)\d{2}\b', citation):
+            return int(match.group())
+        return None
+
+    def extract_doi(self, response):
+        doi = response.css('meta[name="citation_doi"]::attr(content)').get()
+        return doi.rstrip('.') if doi else 'Unavailable'
+
+    def extract_group(self, response):
+        return "Kelompok Nyasar"
+
+    def build_next_url(self, current_url, next_page):
+        parsed = urlparse(current_url)
+        query = parse_qs(parsed.query)
+        query['page'] = [str(next_page)]
+        for param in ['format', 'size', 'filter', 'start']:
+            query.pop(param, None)
+        new_query = urlencode(query, doseq=True)
+        return urlunparse(parsed._replace(query=new_query))
