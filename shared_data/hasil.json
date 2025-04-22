@@ -1,0 +1,169 @@
+[
+{
+    "title": "Artificial Intelligence in Anesthesiology: Current Techniques, Clinical Applications, and Limitations.",
+    "abstract": "Artificial intelligence has been advancing in fields including anesthesiology. This scoping review of the intersection of artificial intelligence and anesthesia research identified and summarized six themes of applications of artificial intelligence in anesthesiology: (1) depth of anesthesia monitoring, (2) control of anesthesia, (3) event and risk prediction, (4) ultrasound guidance, (5) pain management, and (6) operating room logistics. Based on papers identified in the review, several topics within artificial intelligence were described and summarized: (1) machine learning (including supervised, unsupervised, and reinforcement learning), (2) techniques in artificial intelligence (e.g., classical machine learning, neural networks and deep learning, Bayesian methods), and (3) major applied fields in artificial intelligence.The implications of artificial intelligence for the practicing anesthesiologist are discussed as are its limitations and the role of clinicians in further developing artificial intelligence for use in clinical care. Artificial intelligence has the potential to impact the practice of anesthesiology in aspects ranging from perioperative support to critical care delivery to outpatient pain management.",
+    "authors": [
+        "Hashimoto DA",
+        "Witkowski E",
+        "Gao L",
+        "Meireles O",
+        "Rosman G."
+    ],
+    "journal_conference_name": "Anesthesiology",
+    "publisher": "PubMed",
+    "year": 2020,
+    "doi": "10.1097/ALN.0000000000002960",
+    "group_name": "Kelompok Nyasar"
+},
+{
+    "title": "Medical ethics considerations on artificial intelligence.",
+    "abstract": "Artificial intelligence (AI) is currently one of the mostly controversial matters of the world. This article discusses AI in terms of the medical ethics issues involved, both existing and potential. Once artificial intelligence is fully developed within electronic systems, it will afford many useful applications in many sectors ranging from banking, agriculture, medical procedures to military operations, especially by decreasing the involvement of humans in critically dangerous activities. Robots as well as computers themselves are embodiments of values inasmuch as they entail actions and choices, but their practical applications are modelled or programmed by the engineers building the systems. AI will need algorithmic procedures to ensure safety in the implementation of such systems. The AI algorithms written could naturally contain errors that may result in unforeseen consequences and unfair outcomes along economic and racial class lines. It is crucial that measures be taken to monitor technological developments ensuring preventative and precautionary safeguards are in place to safeguard the rights of those involved against direct or indirect coercion. While it is the responsibility of AI researchers to ensure that the future impact is more positive than negative, ethicists and philosophers need to be deeply involved in the development of such technologies from the beginning.",
+    "authors": [
+        "Keskinbora KH."
+    ],
+    "journal_conference_name": "J Clin Neurosci",
+    "publisher": "PubMed",
+    "year": 2019,
+    "doi": "10.1016/j.jocn.2019.03.001",
+    "group_name": "Kelompok Nyasar"
+},
+{
+    "title": "Scientific discovery in the age of artificial intelligence.",
+    "abstract": "Artificial intelligence (AI) is being increasingly integrated into scientific discovery to augment and accelerate research, helping scientists to generate hypotheses, design experiments, collect and interpret large datasets, and gain insights that might not have been possible using traditional scientific methods alone. Here we examine breakthroughs over the past decade that include self-supervised learning, which allows models to be trained on vast amounts of unlabelled data, and geometric deep learning, which leverages knowledge about the structure of scientific data to enhance model accuracy and efficiency. Generative AI methods can create designs, such as small-molecule drugs and proteins, by analysing diverse data modalities, including images and sequences. We discuss how these methods can help scientists throughout the scientific process and the central issues that remain despite such advances. Both developers and users of AI toolsneed a better understanding of when such approaches need improvement, and challenges posed by poor data quality and stewardship remain. These issues cut across scientific disciplines and require developing foundational algorithmic approaches that can contribute to scientific understanding or acquire it autonomously, making them critical areas of focus for AI innovation.",
+    "authors": [
+        "Wang H",
+        "Fu T",
+        "Du Y",
+        "Gao W",
+        "Huang K",
+        "Liu Z",
+        "Chandak P",
+        "Liu S",
+        "Van Katwyk P",
+        "Deac A",
+        "Anandkumar A",
+        "Bergen K",
+        "Gomes CP",
+        "Ho S",
+        "Kohli P",
+        "Lasenby J",
+        "Leskovec J",
+        "Liu TY",
+        "Manrai A",
+        "Marks D",
+        "Ramsundar B",
+        "Song L",
+        "Sun J",
+        "Tang J",
+        "Veličković P",
+        "Welling M",
+        "Zhang L",
+        "Coley CW",
+        "Bengio Y",
+        "Zitnik M."
+    ],
+    "journal_conference_name": "Nature",
+    "publisher": "PubMed",
+    "year": 2023,
+    "doi": "10.1038/s41586-023-06221-2",
+    "group_name": "Kelompok Nyasar"
+},
+{
+    "title": "Artificial Intelligence in Nuclear Medicine.",
+    "abstract": "Despite the great media attention for artificial intelligence (AI), for many health care professionals the term and the functioning of AI remain a \"black box,\" leading to exaggerated expectations on the one hand and unfounded fears on the other. In this review, we provide a conceptual classification and a brief summary of the technical fundamentals of AI. Possible applications are discussed on the basis of a typical work flow in medical imaging, grouped by planning, scanning, interpretation, and reporting. The main limitations of current AI techniques, such as issues with interpretability or the need for large amounts of annotated data, are briefly addressed. Finally, we highlight the possible impact of AI on the nuclear medicine profession, the associated challenges and, last but not least, the opportunities.",
+    "authors": [
+        "Nensa F",
+        "Demircioglu A",
+        "Rischpler C."
+    ],
+    "journal_conference_name": "J Nucl Med",
+    "publisher": "PubMed",
+    "year": 2019,
+    "doi": "10.2967/jnumed.118.220590",
+    "group_name": "Kelompok Nyasar"
+},
+{
+    "title": "Artificial intelligence in cardiology.",
+    "abstract": "This review examines the current state and application of artificial intelligence (AI) and machine learning (ML) in cardiovascular medicine. AI is changing the clinical practice of medicine in other specialties. With progress continuing in this emerging technology, the impact for cardiovascular medicine is highlighted to provide insight for the practicing clinician and to identify potential patient benefits.",
+    "authors": [
+        "Itchhaporia D."
+    ],
+    "journal_conference_name": "Trends Cardiovasc Med",
+    "publisher": "PubMed",
+    "year": 2022,
+    "doi": "10.1016/j.tcm.2020.11.007",
+    "group_name": "Kelompok Nyasar"
+},
+{
+    "title": "Artificial intelligence in healthcare: An essential guide for health leaders.",
+    "abstract": "Artificial Intelligence (AI) is evolving rapidly in healthcare, and various AI applications have been developed to solve some of the most pressing problems that health organizations currently face. It is crucial for health leaders to understand the state of AI technologies and the ways that such technologies can be used to improve the efficiency, safety, and access of health services, achieving value-based care. This article provides a guide to understand the fundamentals of AI technologies (ie, machine learning, natural language processing, and AI voice assistants) as well as their proper use in healthcare. It also provides practical recommendations to help decision-makers develop an AI strategy that can support their digital healthcare transformation.",
+    "authors": [
+        "Chen M",
+        "Decary M."
+    ],
+    "journal_conference_name": "Healthc Manage Forum",
+    "publisher": "PubMed",
+    "year": 2020,
+    "doi": "10.1177/0840470419873123",
+    "group_name": "Kelompok Nyasar"
+},
+{
+    "title": "Medical Artificial Intelligence and Human Values.",
+    "abstract": "Unavailable",
+    "authors": [
+        "Yu KH",
+        "Healey E",
+        "Leong TY",
+        "Kohane IS",
+        "Manrai AK."
+    ],
+    "journal_conference_name": "N Engl J Med",
+    "publisher": "PubMed",
+    "year": 2024,
+    "doi": "10.1056/NEJMra2214183",
+    "group_name": "Kelompok Nyasar"
+},
+{
+    "title": "Introduction to artificial intelligence in medicine.",
+    "abstract": "The term Artificial Intelligence (AI) was coined by John McCarthy in 1956 during a conference held on this subject. However, the possibility of machines being able to simulate human behavior and actually think was raised earlier by Alan Turing who developed the Turing test in order to differentiate humans from machines. Since then, computational power has grown to the point of instant calculations and the ability evaluate new data, according to previously assessed data, in real time. Today, AI is integrated into our daily lives in many forms, such as personal assistants (Siri, Alexa, Google assistant etc.), automated mass transportation, aviation and computer gaming. More recently, AI has also begun to be incorporated into medicine to improve patient care by speeding up processes and achieving greater accuracy, opening the path to providing better healthcare overall. Radiological images, pathology slides, and patients' electronic medical records (EMR) are being evaluated by machine learning, aiding in the process of diagnosis and treatment of patients and augmenting physicians' capabilities. Herein we describe the current status of AI in medicine, the way it is used in the different disciplines and future trends.",
+    "authors": [
+        "Mintz Y",
+        "Brodie R."
+    ],
+    "journal_conference_name": "Minim Invasive Ther Allied Technol",
+    "publisher": "PubMed",
+    "year": 2019,
+    "doi": "10.1080/13645706.2019.1575882",
+    "group_name": "Kelompok Nyasar"
+},
+{
+    "title": "Artificial intelligence in medicine.",
+    "abstract": "Artificial Intelligence (AI) is a general term that implies the use of a computer to model intelligent behavior with minimal human intervention. AI is generally accepted as having started with the invention of robots. The term derives from the Czech word robota, meaning biosynthetic machines used as forced labor. In this field, Leonardo Da Vinci's lasting heritage is today's burgeoning use of robotic-assisted surgery, named after him, for complex urologic and gynecologic procedures. Da Vinci's sketchbooks of robots helped set the stage for this innovation. AI, described as the science and engineering of making intelligent machines, was officially born in 1956. The term is applicable to a broad range of items in medicine such as robotics, medical diagnosis, medical statistics, and human biology-up to and including today's \"omics\". AI in medicine, which is the focus of this review, has two main branches: virtual and physical. The virtual branch includes informatics approaches from deep learning information management to control of health management systems, including electronic health records, and active guidance of physicians in their treatment decisions. The physical branch is best represented by robots used to assist the elderly patient or the attending surgeon. Also embodied in this branch are targeted nanorobots, a unique new drug delivery system. The societal and ethical complexities of these applications require further reflection, proof of their medical utility, economic value, and development of interdisciplinary strategies for their wider application.",
+    "authors": [
+        "Hamet P",
+        "Tremblay J."
+    ],
+    "journal_conference_name": "Metabolism",
+    "publisher": "PubMed",
+    "year": 2017,
+    "doi": "10.1016/j.metabol.2017.01.011",
+    "group_name": "Kelompok Nyasar"
+},
+{
+    "title": "Artificial intelligence to deep learning: machine intelligence approach for drug discovery.",
+    "abstract": "Drug designing and development is an important area of research for pharmaceutical companies and chemical scientists. However, low efficacy, off-target delivery, time consumption, and high cost impose a hurdle and challenges that impact drug design and discovery. Further, complex and big data from genomics, proteomics, microarray data, and clinical trials also impose an obstacle in the drug discovery pipeline. Artificial intelligence and machine learning technology play a crucial role in drug discovery and development. In other words, artificial neural networks and deep learning algorithms have modernized the area. Machine learning and deep learning algorithms have been implemented in several drug discovery processes such as peptide synthesis, structure-based virtual screening, ligand-based virtual screening, toxicity prediction, drug monitoring and release, pharmacophore modeling, quantitative structure-activity relationship, drug repositioning, polypharmacology, and physiochemical activity. Evidence from the past strengthens the implementation of artificial intelligence and deep learning in this field. Moreover, novel data mining, curation, and management techniques provided critical support to recently developed modeling algorithms. In summary, artificial intelligence and deep learning advancements provide an excellent opportunity for rational drug design and discovery process, which will eventually impact mankind. The primary concern associated with drug design and development is time consumption and production cost. Further, inefficiency, inaccurate target delivery, and inappropriate dosage are other hurdles that inhibit the process of drug delivery and development. With advancements in technology, computer-aided drug design integrating artificial intelligence algorithms can eliminate the challenges and hurdles of traditional drug design and development. Artificial intelligence is referred to as superset comprising machine learning, whereas machine learning comprises supervised learning, unsupervised learning, and reinforcement learning. Further, deep learning, a subset of machine learning, has been extensively implemented in drug design and development. The artificial neural network, deep neural network, support vector machines, classification and regression, generative adversarial networks, symbolic learning, and meta-learning are examples of the algorithms applied to the drug design and discovery process. Artificial intelligence has been applied to different areas of drug design and development process, such as from peptide synthesis to molecule design, virtual screening to molecular docking, quantitative structure-activity relationship to drug repositioning, protein misfolding to protein-protein interactions, and molecular pathway identification to polypharmacology. Artificial intelligence principles have been applied to the classification of active and inactive, monitoring drug release, pre-clinical and clinical development, primary and secondary drug screening, biomarker development, pharmaceutical manufacturing, bioactivity identification and physiochemical properties, prediction of toxicity, and identification of mode of action.",
+    "authors": [
+        "Gupta R",
+        "Srivastava D",
+        "Sahu M",
+        "Tiwari S",
+        "Ambasta RK",
+        "Kumar P."
+    ],
+    "journal_conference_name": "Mol Divers",
+    "publisher": "PubMed",
+    "year": 2021,
+    "doi": "10.1007/s11030-021-10217-3",
+    "group_name": "Kelompok Nyasar"
+}
+]
