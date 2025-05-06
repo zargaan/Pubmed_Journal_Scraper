@@ -9,7 +9,7 @@ class PubMedSpider(scrapy.Spider):
 
     custom_settings = {
         'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-        'DOWNLOAD_DELAY': 3,
+        'DOWNLOAD_DELAY': 2,
         'AUTOTHROTTLE_ENABLED': True,
         'RETRY_TIMES': 2,
         'MAX_PAGES': 5,
@@ -18,7 +18,7 @@ class PubMedSpider(scrapy.Spider):
         'FEED_EXPORT_ENCODING': 'utf-8',
         'FEED_EXPORT_INDENT': 4,
         'FEEDS': {
-            'shared_data/scraping_hasil.json': {
+            'shared_data/scraping_hasil_ai.json': {
                 'format': 'json',
                 'encoding': 'utf-8',
                 'indent': 4,
@@ -33,7 +33,19 @@ class PubMedSpider(scrapy.Spider):
         }
     }
 
+    def start_requests(self):
+        yield scrapy.Request(
+            url=self.start_urls[0],
+            callback=self.parse,
+            meta={'page_number': 1, 'max_pages': self.settings.getint('MAX_PAGES', 5)}
+        )
+
     def parse(self, response):
+        page_number = response.meta['page_number']
+        max_pages = response.meta['max_pages']
+
+        self.logger.info(f"📄 Parsing halaman ke-{page_number} dari {max_pages} halaman")
+
         articles = response.css('div.docsum-content')
         for article in articles:
             title_parts = article.css('a.docsum-title ::text').getall()
@@ -49,9 +61,15 @@ class PubMedSpider(scrapy.Spider):
             full_url = response.urljoin(detail_link)
             yield response.follow(full_url, callback=self.parse_detail, meta=meta_data)
 
-        next_page = response.css('a.next-page::attr(href)').get()
-        if next_page:
-            yield response.follow(next_page, callback=self.parse)
+        # Pagination yang dikontrol manual
+        if page_number < max_pages:
+            next_page = page_number + 1
+            next_url = self.build_next_url(response.url, next_page)
+            yield scrapy.Request(
+                url=next_url,
+                callback=self.parse,
+                meta={'page_number': next_page, 'max_pages': max_pages}
+            )
 
     def parse_detail(self, response):
         item = {
@@ -96,7 +114,5 @@ class PubMedSpider(scrapy.Spider):
         parsed = urlparse(current_url)
         query = parse_qs(parsed.query)
         query['page'] = [str(next_page)]
-        for param in ['format', 'size', 'filter', 'start']:
-            query.pop(param, None)
         new_query = urlencode(query, doseq=True)
         return urlunparse(parsed._replace(query=new_query))
