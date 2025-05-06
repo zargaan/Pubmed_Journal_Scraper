@@ -1,0 +1,5 @@
+outs:
+- md5: 4f8b57e015caafa7d6a3555aca381c13
+  size: 829908
+  hash: md5
+  path: scraping_hasil.json
