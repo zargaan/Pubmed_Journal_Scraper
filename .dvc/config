@@ -1,0 +1,4 @@
+[core]
+    remote = gdrive_remote
+['remote "gdrive_remote"']
+    url = gdrive://1iKWa7XHloT7HecRHd0OgwI4QOW_n3uWj?usp=sharing
