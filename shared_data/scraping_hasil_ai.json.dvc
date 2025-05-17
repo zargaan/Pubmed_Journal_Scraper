@@ -1,0 +1,5 @@
+outs:
+- md5: 063f4f9d711cfa90ffa3c75b2146ca6e
+  size: 7265974
+  hash: md5
+  path: scraping_hasil_ai.json
