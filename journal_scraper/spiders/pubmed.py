@@ -5,7 +5,7 @@ from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
 class PubMedSpider(scrapy.Spider):
     name = 'pubmed_spider'
     allowed_domains = ['pubmed.ncbi.nlm.nih.gov']
-    start_urls = ['https://pubmed.ncbi.nlm.nih.gov/?term=artificial+intelligence']
+    start_urls = ['https://pubmed.ncbi.nlm.nih.gov/?term=information+system']
 
     custom_settings = {
         'USER_AGENT': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
@@ -18,7 +18,7 @@ class PubMedSpider(scrapy.Spider):
         'FEED_EXPORT_ENCODING': 'utf-8',
         'FEED_EXPORT_INDENT': 4,
         'FEEDS': {
-            'shared_data/scraping_hasil_ai.json': {
+            'shared_data/scraping_hasil_is.json': {
                 'format': 'json',
                 'encoding': 'utf-8',
                 'indent': 4,
