@@ -1,3 +1,5 @@
+version: '3'
+
 services:
   scraping-api:
     build:
@@ -11,6 +13,8 @@ services:
       - ./Hasil Scraping:/app/shared_data
     environment:
       - FLASK_ENV=development
+    networks:
+      - scraper-net
 
   preprocessing-api:
     build:
@@ -21,12 +25,33 @@ services:
       - ./journal_scraper:/app/journal_scraper
       - ./Hasil Scraping:/app/shared_data
       - ./models:/app/models
-    
     ports:
       - "5001:5001"
-
     depends_on:
       - scraping-api
+    networks:
+      - scraper-net
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - scraper-net
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    networks:
+      - scraper-net
+
+volumes:
+  grafana-storage:
 
 networks:
   scraper-net:
