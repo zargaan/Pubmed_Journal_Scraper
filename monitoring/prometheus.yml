@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: 'scraping-api'
+    static_configs:
+      - targets: ['scraping-api:8000']
+
+  - job_name: 'preprocessing-api'
+    static_configs:
+      - targets: ['preprocessing-api:8000']
