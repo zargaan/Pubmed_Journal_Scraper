@@ -1,0 +1,5 @@
+outs:
+- md5: a911dfc4deaa8ded47129d3a82c7b60f
+  size: 15285250
+  hash: md5
+  path: seluruh_hasil.json
