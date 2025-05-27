@@ -18,7 +18,7 @@ def train_model(documents):
 
     # Ambil frekuensi topik
     topic_freq = topic_model.get_topic_info()
-    top_topics = topic_freq[topic_freq.Topic != -1].nlargest(3, "Count")
+    top_topics = topic_freq[topic_freq.Topic != -1].nlargest(5, "Count")
 
     # Mapping label topik (bisa disesuaikan)
     topic_labels = {
@@ -36,7 +36,7 @@ def train_model(documents):
         words = topic_model.get_topic(topic_id)
         top_keywords_5[str(topic_id)] = [
             {"keyword": word.replace("_", " "), "weight": float(weight)}
-            for word, weight in words[:5]
+            for word, weight in words[:3]
         ]
 
     # Format ke tabel Grafana

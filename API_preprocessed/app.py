@@ -150,7 +150,7 @@ def get_top_keywords():
                 topic_labels = {
                     "0": "Health Information Systems",
                     "1": "Information Management & HR Planning",
-                    "2": "Privacy-Preserving Electronic Health Records",
+                    "2": "BlockChain",
                     "3": "Information & Data Security",
                     "4": "Clinical & Patient Information Systems"
                 }

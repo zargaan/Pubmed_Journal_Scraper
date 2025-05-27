@@ -1,7 +1,0 @@
-pandas
-numpy
-matplotlib
-wordcloud
-nltk
-transformers
-torch
