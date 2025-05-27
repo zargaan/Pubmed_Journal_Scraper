@@ -3,9 +3,11 @@ global:
 
 scrape_configs:
   - job_name: 'scraping-api'
+    metrics_path: /metrics
     static_configs:
-      - targets: ['scraping-api:8000']
+      - targets: ['scraping-api:5000']
 
   - job_name: 'preprocessing-api'
+    metrics_path: /api/preprocessed/metrics
     static_configs:
-      - targets: ['preprocessing-api:8000']
+      - targets: ['preprocessing-api:5001']

@@ -10,7 +10,7 @@ services:
       - "5000:5000"
     volumes:
       - ./shared/data:/app/data
-      - ./Hasil Scraping:/app/shared_data
+      - ./shared_data:/app/shared_data
     environment:
       - FLASK_ENV=development
     networks:
@@ -23,7 +23,7 @@ services:
     volumes:
       - ./shared/data:/app/data
       - ./journal_scraper:/app/journal_scraper
-      - ./Hasil Scraping:/app/shared_data
+      - ./shared_data:/app/shared_data
       - ./models:/app/models
     ports:
       - "5001:5001"
@@ -34,6 +34,7 @@ services:
 
   prometheus:
     image: prom/prometheus
+    container_name: prometheus
     ports:
       - "9090:9090"
     volumes:
@@ -43,12 +44,17 @@ services:
 
   grafana:
     image: grafana/grafana
+    container_name: grafana
     ports:
       - "3000:3000"
     volumes:
       - grafana-storage:/var/lib/grafana
+    depends_on:
+      - prometheus
     networks:
       - scraper-net
+    environment:
+      - GF_INSTALL_PLUGINS=marcusolsson-json-datasource,dalvany-image-panel
 
 volumes:
   grafana-storage:

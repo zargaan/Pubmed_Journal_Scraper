@@ -22,7 +22,7 @@ nltk.download('stopwords')
 class DataProcessor:
     def __init__(self, data_path=None):
         
-        self.data_path = data_path or 'shared_data/scraping_hasil.json'
+        self.data_path = data_path or 'shared_data/seluruh_hasil.json'
         self.data = None
         self.filtered_words = []
         self.keyword_counts = {}
@@ -60,7 +60,7 @@ class DataProcessor:
         return [word for word in words if word not in stop_words]
     
     def generate_wordcloud(self):
-        """Generate wordcloud image as base64"""
+        """Generate wordcloud image """
         wordcloud = WordCloud(width=800, height=400, background_color='white').generate(' '.join(self.filtered_words))
         
         img_buffer = BytesIO()
@@ -126,13 +126,13 @@ class DataProcessor:
             self.load_data()
             
         titles = self.extract_titles()
-        years = self.data['journal'].apply(lambda x: x.get('year', None)).dropna()
-        
+        years = self.data['year'].dropna()
+
         return {
             'total_articles': len(self.data),
             'earliest_year': int(years.min()) if not years.empty else None,
             'latest_year': int(years.max()) if not years.empty else None,
-            'unique_journals': self.data['journal'].apply(lambda x: x.get('name', '')).nunique()
+            'unique_journals': self.data['journal_conference_name'].nunique()
         }
     
     def get_keyword_counts(self):

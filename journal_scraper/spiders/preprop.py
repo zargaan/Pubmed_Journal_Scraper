@@ -12,6 +12,7 @@ from transformers import BertTokenizer, BertModel
 import torch
 from io import BytesIO
 import base64
+import json
 
 # Mengunduh stopwords dari NLTK
 nltk.download('punkt_tab')
@@ -49,6 +50,16 @@ stop_words = set(stopwords.words('english'))
 # Menghapus stopwords
 filtered_words = [word for word in words if word not in stop_words]
 
+# Menghapus domain-specific stopwords
+domain_stopwords = set(['approach', 'study', 'method', 'result', 'effect'])
+filtered_words = [word for word in filtered_words if word not in domain_stopwords]
+
+# Lemmatization
+from nltk.stem import WordNetLemmatizer
+nltk.download('wordnet')
+lemmatizer = WordNetLemmatizer()
+filtered_words = [lemmatizer.lemmatize(word) for word in filtered_words]
+
 # Membuat WordCloud
 wordcloud = WordCloud(width=800, height=400, background_color='white').generate(' '.join(filtered_words))
 
@@ -84,6 +95,10 @@ if filtered_word_freq:
         plt.show()
 else:
     print("No Match")
+
+# Simpan keyword-keyword terfilter ke top_keywords.json
+with open('models/top_keywords.json', 'w') as f:
+    json.dump(sorted(filtered_word_freq.items(), key=lambda x: x[1], reverse=True), f)
 
 #Representasi teks
 

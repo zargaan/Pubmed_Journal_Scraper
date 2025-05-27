@@ -1,0 +1,144 @@
+{
+  "columns": [
+    {
+      "text": "Topic",
+      "type": "string"
+    },
+    {
+      "text": "Keyword",
+      "type": "string"
+    },
+    {
+      "text": "Weight",
+      "type": "number"
+    }
+  ],
+  "rows": [
+    [
+      "Health Information Systems",
+      "health",
+      0.04004279688225429
+    ],
+    [
+      "",
+      "information",
+      0.022551893240301827
+    ],
+    [
+      "",
+      "systems",
+      0.017071121246120025
+    ],
+    [
+      "",
+      "system",
+      0.016152265322686446
+    ],
+    [
+      "",
+      "care",
+      0.015518639390657013
+    ],
+    [
+      "Information Management & HR Planning",
+      "management",
+      0.02380736901887122
+    ],
+    [
+      "",
+      "system",
+      0.022614851295182984
+    ],
+    [
+      "",
+      "information",
+      0.02178151126132518
+    ],
+    [
+      "",
+      "planning",
+      0.017829060994234598
+    ],
+    [
+      "",
+      "systems",
+      0.013199634661571723
+    ],
+    [
+      "Privacy-Preserving Electronic Health Records",
+      "life",
+      0.021106268289211062
+    ],
+    [
+      "",
+      "machines",
+      0.020099996161637587
+    ],
+    [
+      "",
+      "intelligence",
+      0.01940342374775916
+    ],
+    [
+      "",
+      "artificial",
+      0.01838185606467682
+    ],
+    [
+      "",
+      "ai",
+      0.01744419714353245
+    ],
+    [
+      "Information & Data Security",
+      "security",
+      0.07476690963237848
+    ],
+    [
+      "",
+      "privacy",
+      0.04036769438527704
+    ],
+    [
+      "",
+      "internet",
+      0.022989578823348535
+    ],
+    [
+      "",
+      "protection",
+      0.020259048099035833
+    ],
+    [
+      "",
+      "data",
+      0.01835025352265342
+    ],
+    [
+      "Clinical & Patient Information Systems",
+      "healthcare",
+      0.02729500876077915
+    ],
+    [
+      "",
+      "health",
+      0.02556068404920279
+    ],
+    [
+      "",
+      "care",
+      0.022111779526639008
+    ],
+    [
+      "",
+      "public",
+      0.018173870921322093
+    ],
+    [
+      "",
+      "intelligence",
+      0.0179990870214658
+    ]
+  ],
+  "type": "table"
+}

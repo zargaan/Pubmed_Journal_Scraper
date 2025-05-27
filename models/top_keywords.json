@@ -1,0 +1,112 @@
+{
+  "0": [
+    {
+      "keyword": "health information",
+      "weight": 0.059402133694560565
+    },
+    {
+      "keyword": "health information systems",
+      "weight": 0.033783364959294654
+    },
+    {
+      "keyword": "national health information",
+      "weight": 0.027527098576268578
+    },
+    {
+      "keyword": "national health",
+      "weight": 0.02672640382842489
+    },
+    {
+      "keyword": "information systems",
+      "weight": 0.025032880937894048
+    }
+  ],
+  "1": [
+    {
+      "keyword": "management information",
+      "weight": 0.0642152701336189
+    },
+    {
+      "keyword": "information planning",
+      "weight": 0.0396467156373448
+    },
+    {
+      "keyword": "information information",
+      "weight": 0.03933720608067933
+    },
+    {
+      "keyword": "information technology",
+      "weight": 0.035062551482399555
+    },
+    {
+      "keyword": "total information",
+      "weight": 0.03297744390860268
+    }
+  ],
+  "2": [
+    {
+      "keyword": "clinical information",
+      "weight": 0.11395151820178138
+    },
+    {
+      "keyword": "medical information",
+      "weight": 0.07503351060326796
+    },
+    {
+      "keyword": "patient information",
+      "weight": 0.049469182864502345
+    },
+    {
+      "keyword": "information retrieval",
+      "weight": 0.03745496245977138
+    },
+    {
+      "keyword": "computerized clinical",
+      "weight": 0.030894834858682607
+    }
+  ],
+  "3": [
+    {
+      "keyword": "internet security",
+      "weight": 0.12230857000067417
+    },
+    {
+      "keyword": "data security",
+      "weight": 0.10717182064197989
+    },
+    {
+      "keyword": "privacy security",
+      "weight": 0.0671985534546649
+    },
+    {
+      "keyword": "security security",
+      "weight": 0.06307300971349032
+    },
+    {
+      "keyword": "information security",
+      "weight": 0.05913038845531757
+    }
+  ],
+  "4": [
+    {
+      "keyword": "security rule",
+      "weight": 0.16502302586498338
+    },
+    {
+      "keyword": "security rules",
+      "weight": 0.08404667996150823
+    },
+    {
+      "keyword": "security standards",
+      "weight": 0.08040655990785062
+    },
+    {
+      "keyword": "privacy security",
+      "weight": 0.07099847165597035
+    },
+    {
+      "keyword": "protected health information",
+      "weight": 0.06030491993088796
+    }
+  ]
+}

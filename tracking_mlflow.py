@@ -77,7 +77,7 @@ def train_model(documents):
         return metrics
 
 if __name__ == "__main__":
-    data_path = os.path.join("Hasil Scraping", "scraping_hasil.json")
+    data_path = os.path.join("shared_data", "seluruh_hasil.json")
     if not os.path.exists(data_path):
         exit(1)
 
