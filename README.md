@@ -1,4 +1,4 @@
-# PubMed Journal Scraper 🔥📚
+# PubMed Journal Scraper
 
 [![Scrapy](https://img.shields.io/badge/Scrapy-2.11%2B-red)](https://scrapy.org/)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://python.org)
@@ -13,20 +13,17 @@ Proyek ini bertujuan untuk mengumpulkan data judul Artikel dari situs web PubMed
 2. Ndaniel Mahulae	-	225150300111016
 3. Aracel Nestova Aprilyanto	- 225150200111054
 
-## 📌 Daftar Isi
-- [Sumber_Data](#-sumber_data)
-- [Struktur Direktori](#-struktur-direktori)
-- [Fitur](#-fitur)
-- [Instalasi](#-instalasi)
-- [Penggunaan](#-penggunaan)
-- [Konfigurasi](#-konfigurasi)
-- [Output](#-output)
-- [Troubleshooting](#-troubleshooting)
-- [Etika](#-etika)
-- [Preprocessing](#-preprocessing)
-- [Monitoring](#-monitoring)
-- [Docker Deployment](#-docker-deployment)
-- [Lisensi](#-lisensi)
+## Daftar Isi
+- [Sumber Data](#sumber-data)
+- [Struktur Direktori](#struktur-direktori)
+- [Fitur](#fitur)
+- [Instalasi](#instalasi)
+- [Penggunaan](#penggunaan)
+- [Monitoring](#monitoring)
+- [Preprocessing](#preprocessing)
+- [Docker Deployment](#docker-deployment)
+- [Etika](#etika)
+- [Lisensi](#lisensi)
 
 ---
 
@@ -70,7 +67,7 @@ Website : [PubMed](https://pubmed.ncbi.nlm.nih.gov/)
  ┗ 📜README.md
 ```
 
-## 🚀 Fitur
+## Fitur
 - **API Scraping:**
   - Auto-pagination hingga 1000 halaman
   - Sistem anti-blokir dengan delay acak
@@ -90,7 +87,7 @@ Website : [PubMed](https://pubmed.ncbi.nlm.nih.gov/)
   - Real-time monitoring
   - Performance tracking
 
-## ⚙️ Instalasi
+## Instalasi
 
 ### 1️⃣ Clone Repo
 ```bash
@@ -113,7 +110,7 @@ docker-compose up -d
 - Grafana Dashboard: http://localhost:3000
 - Prometheus: http://localhost:9090
 
-## 🛠️ Penggunaan
+## Penggunaan
 
 ### API Scraping
 ```bash
@@ -131,7 +128,7 @@ curl -X POST http://localhost:5001/preprocess \
   -d '{"data": "path/to/data.csv"}'
 ```
 
-## 📊 Monitoring
+## Monitoring
 - **Prometheus Metrics:**
   - Request latency
   - Error rates
@@ -144,14 +141,14 @@ curl -X POST http://localhost:5001/preprocess \
   - System health
   - Custom visualizations
 
-## 🔍 Preprocessing
+## Preprocessing
 Proses pembersihan data dilakukan sebelum data disimpan:
 - **Clean Text:** Menghapus spasi berlebih, newline, dan karakter tidak relevan pada judul
 - **Clean Authors:** Menghapus tanda "et al.", ellipsis, dan pemisah seperti titik koma pada daftar penulis
 - **Parse Journal:** Memisahkan nama jurnal, tahun publikasi, dan kutipan lengkap menggunakan regex
 - **Topic Modeling:** Analisis topik dari artikel menggunakan LDA
 
-## 🐳 Docker Deployment
+## Docker Deployment
 Proyek menggunakan Docker Compose untuk mengelola multiple services:
 - **Scraping API:** Port 5000
 - **Preprocessing API:** Port 5001
@@ -160,7 +157,7 @@ Proyek menggunakan Docker Compose untuk mengelola multiple services:
 
 Konfigurasi Docker dapat ditemukan di `docker-compose.yml`
 
-## ⚠️ Etika
+## Etika
 - **Patuhi** `robots.txt` PubMed
 - **Cache hasil secara lokal** untuk mengurangi request
 - **Hindari scraping data pribadi**
@@ -168,5 +165,5 @@ Konfigurasi Docker dapat ditemukan di `docker-compose.yml`
 
 ---
 
-## 📄 Lisensi
+## Lisensi
 Proyek ini dilisensikan di bawah [MIT License](LICENSE)
