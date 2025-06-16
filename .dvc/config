@@ -1,4 +1,8 @@
 [core]
-    remote = gdrive_remote
+    remote = dvc_tm
 ['remote "gdrive_remote"']
     url = gdrive://1gsUgyye8Fx2FkuZF5NYXpr2T-R5znsHl?usp=sharing
+['remote "dvc_tm"']
+    url = gdrive://1gsUgyye8Fx2FkuZF5NYXpr2T-R5znsHl
+    gdrive_use_service_account = true
+    gdrive_service_account_json_file_path = C:/Users/danie/Downloads/dvc.json

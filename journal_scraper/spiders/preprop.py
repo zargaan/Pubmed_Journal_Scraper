@@ -15,7 +15,6 @@ import base64
 import json
 
 # Mengunduh stopwords dari NLTK
-nltk.download('punkt_tab')
 nltk.download('punkt')
 nltk.download('stopwords')
 

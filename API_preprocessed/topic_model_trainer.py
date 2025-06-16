@@ -20,7 +20,7 @@ def train_model(documents):
     topic_freq = topic_model.get_topic_info()
     top_topics = topic_freq[topic_freq.Topic != -1].nlargest(5, "Count")
 
-    # Mapping label topik (bisa disesuaikan)
+    # Mapping label topik
     topic_labels = {
         "0": "Health Information Systems",
         "1": "Information Management & HR Planning",
@@ -29,23 +29,23 @@ def train_model(documents):
         "4": "Clinical & Patient Information Systems"
     }
 
-    # Ambil top 5 keyword dari tiap topik
-    top_keywords_5 = {}
+    # Ambil top 3 keyword dari tiap topik
+    top_keywords_3 = {}
     for _, row in top_topics.iterrows():
         topic_id = row['Topic']
         words = topic_model.get_topic(topic_id)
-        top_keywords_5[str(topic_id)] = [
+        top_keywords_3[str(topic_id)] = [
             {"keyword": word.replace("_", " "), "weight": float(weight)}
             for word, weight in words[:3]
         ]
 
     # Format ke tabel Grafana
     grafana_rows = []
-    for topic_id_str, keywords in top_keywords_5.items():
+    for topic_id_str, keywords in top_keywords_3.items():
         topic_label = topic_labels.get(topic_id_str, f"Topic {topic_id_str}")
         for i, kw in enumerate(keywords):
             grafana_rows.append([
-                topic_label if i == 0 else "",  # hanya di baris pertama
+                topic_label if i == 0 else "", 
                 kw["keyword"],
                 kw["weight"]
             ])

@@ -1,0 +1,5 @@
+outs:
+- md5: 6d97223893b92ca14353c3df550066c0
+  size: 165234920
+  hash: md5
+  path: bertopic_model.pkl

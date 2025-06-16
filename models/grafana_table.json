@@ -16,78 +16,78 @@
   "rows": [
     [
       "Health Information Systems",
-      "health",
-      0.037782837726838256
+      "management",
+      0.023313491507150615
+    ],
+    [
+      "",
+      "system",
+      0.021989646502207846
     ],
     [
       "",
       "information",
-      0.02107730968889239
-    ],
-    [
-      "",
-      "systems",
-      0.01640664040038466
+      0.021349727462594226
     ],
     [
       "Information Management & HR Planning",
-      "system",
-      0.021353625242637547
-    ],
-    [
-      "",
-      "management",
-      0.02122279360901609
-    ],
-    [
-      "",
-      "information",
-      0.020645246846756903
-    ],
-    [
-      "Privacy-Preserving Electronic Health Records",
       "blockchain",
-      0.1054306243522519
+      0.10259482260173867
     ],
     [
       "",
       "blockchainbased",
-      0.04794392242817568
+      0.04655407319200927
     ],
     [
       "",
       "secure",
-      0.023697206220870536
+      0.025456312154032094
+    ],
+    [
+      "Privacy-Preserving Electronic Health Records",
+      "clinical",
+      0.03700286435302396
+    ],
+    [
+      "",
+      "information",
+      0.02294031475648877
+    ],
+    [
+      "",
+      "patient",
+      0.021943058753127402
     ],
     [
       "Information & Data Security",
-      "security",
-      0.07935120678002543
-    ],
-    [
-      "",
-      "internet",
-      0.024947566013529657
-    ],
-    [
-      "",
-      "firewall",
-      0.021160652792574668
-    ],
-    [
-      "Clinical & Patient Information Systems",
       "healthcare",
-      0.0304157436573522
+      0.02739883339267873
     ],
     [
       "",
       "health",
-      0.02601589387843376
+      0.025956710870023384
     ],
     [
       "",
       "care",
-      0.02221134037707683
+      0.022808402609431296
+    ],
+    [
+      "Clinical & Patient Information Systems",
+      "intelligence",
+      0.02086632588282847
+    ],
+    [
+      "",
+      "ai",
+      0.018917683644761468
+    ],
+    [
+      "",
+      "human",
+      0.018834814634076127
     ]
   ],
   "type": "table"
