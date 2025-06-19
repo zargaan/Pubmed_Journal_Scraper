@@ -17,77 +17,77 @@
     [
       "Health Information Systems",
       "management",
-      0.023313491507150615
+      0.025193401440027397
     ],
     [
       "",
       "system",
-      0.021989646502207846
+      0.02316904605656952
     ],
     [
       "",
       "information",
-      0.021349727462594226
+      0.022496958215562825
     ],
     [
       "Information Management & HR Planning",
       "blockchain",
-      0.10259482260173867
+      0.10810328784965467
     ],
     [
       "",
       "blockchainbased",
-      0.04655407319200927
+      0.04779299914649384
     ],
     [
       "",
       "secure",
-      0.025456312154032094
+      0.026129518499075282
     ],
     [
       "Privacy-Preserving Electronic Health Records",
-      "clinical",
-      0.03700286435302396
-    ],
-    [
-      "",
-      "information",
-      0.02294031475648877
-    ],
-    [
-      "",
-      "patient",
-      0.021943058753127402
-    ],
-    [
-      "Information & Data Security",
-      "healthcare",
-      0.02739883339267873
-    ],
-    [
-      "",
-      "health",
-      0.025956710870023384
-    ],
-    [
-      "",
-      "care",
-      0.022808402609431296
-    ],
-    [
-      "Clinical & Patient Information Systems",
       "intelligence",
-      0.02086632588282847
+      0.019412118395519377
     ],
     [
       "",
       "ai",
-      0.018917683644761468
+      0.01928449229154443
     ],
     [
       "",
-      "human",
-      0.018834814634076127
+      "artificial",
+      0.0190355112115578
+    ],
+    [
+      "Information & Data Security",
+      "clinical",
+      0.036059909913812214
+    ],
+    [
+      "",
+      "information",
+      0.02419167073687352
+    ],
+    [
+      "",
+      "system",
+      0.023754375188514535
+    ],
+    [
+      "Clinical & Patient Information Systems",
+      "healthcare",
+      0.03235413358427513
+    ],
+    [
+      "",
+      "health",
+      0.02532190598317657
+    ],
+    [
+      "",
+      "care",
+      0.02463002245881001
     ]
   ],
   "type": "table"

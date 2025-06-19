@@ -1,5 +1,5 @@
 outs:
-- md5: 6d97223893b92ca14353c3df550066c0
-  size: 165234920
+- md5: bbb0e27bdaa78e919ed35a4685b4c8e9
+  size: 164735744
   hash: md5
   path: bertopic_model.pkl
