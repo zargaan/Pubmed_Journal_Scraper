@@ -36,7 +36,10 @@ Website : [PubMed](https://pubmed.ncbi.nlm.nih.gov/)
 
 ```plaintext
 📦journal_scraper/
- ┣ 📂API_Scraping/         # API untuk scraping data
+ ┣ 📂.dvc/                      # Folder konfigurasi DVC
+ ┃ ┣ 📜.gitignore               # Abaikan isi tertentu dari folder ini
+ ┃ ┣ 📜config                   # Konfigurasi DVC utama
+ ┣ 📂API_Scraping/        # API untuk scraping data
  ┃ ┣ 📜app.py             # Flask API endpoint
  ┃ ┣ 📜Dockerfile         # Konfigurasi Docker
  ┃ ┗ 📜requirements.txt   # Dependencies
@@ -44,27 +47,46 @@ Website : [PubMed](https://pubmed.ncbi.nlm.nih.gov/)
  ┃ ┣ 📜app.py             # Flask API endpoint
  ┃ ┣ 📜Dockerfile         # Konfigurasi Docker
  ┃ ┣ 📜requirements.txt   # Dependencies
- ┃ ┗ 📜topic_model_trainer.py # Model training
- ┣ 📂data/                # Data storage
- ┣ 📂models/              # Model storage
+ ┃ ┗ 📜topic_model_trainer.py   # Model training
+ ┣ 📂journal_scraper/           # Core scraper code
+ ┃ ┣ 📂spiders/                 # Spider-spider Scrapy
+ ┃ ┃ ┣ 📜preprop.py             # Spider preprocessing 
+ ┃ ┃ ┣ 📜pubmed.py              # Spider untuk scraping dari PubMed
+ ┃ ┃ ┣ 📜statistik.py           # Spider untuk statistik atau metrik tambahan
+ ┃ ┃ ┗ 📜__init__.py            # Init file untuk modul spiders
+ ┃ ┣ 📜items.py                 # Definisi struktur item hasil scraping
+ ┃ ┣ 📜middlewares.py           # Middleware Scrapy untuk modifikasi request/response
+ ┃ ┣ 📜pipelines.py             # Pipeline pemrosesan data hasil scraping
+ ┃ ┣ 📜settings.py              # Konfigurasi utama Scrapy
+ ┃ ┗ 📜__init__.py              # Init file untuk modul utama journal_scraper
+ ┣ 📂models/                    # Model storage
+ ┃ ┣ 📜bertopic_model.pkl.dvc   # Metadata tracking DVC untuk model
+ ┃ ┣ 📜grafana_table.json       # Output dalam format JSON untuk dashboard Grafana
+ ┃ ┣ 📜top_keywords.json        # Kata kunci utama dari hasil model
+ ┃ ┗ 📜training_metrics.json    # Metrik hasil pelatihan model
  ┣ 📂monitoring/          # Monitoring configuration
  ┃ ┗ 📜prometheus.yml     # Prometheus config
- ┣ 📂shared/              # Shared utilities
+ ┣ 📂shared/data/         # Shared utilities/ Folder untuk wordcloud hasil visualisasi topik
+ ┃ ┗ 📜wordcloud.png      # Gambar wordcloud dalam ekstensi png
  ┣ 📂shared_data/         # Shared data storage
- ┣ 📂journal_scraper/     # Core scraper code
- ┃ ┣ 📂spiders/
- ┃ ┃ ┣ 📜pubmed.py
- ┃ ┃ ┗ 📜__init__.py
- ┃ ┣ 📜items.py
- ┃ ┣ 📜middlewares.py
- ┃ ┣ 📜pipelines.py
- ┃ ┣ 📜settings.py
- ┃ ┗ 📜__init__.py
+ ┃ ┣ 📜.gitignore               # Mengabaikan file tertentu dari Git
+ ┃ ┣ 📜JlhScraping.py           # Script analisis untuk menggabungkan semua scraping
+ ┃ ┣ 📜scraping_hasil_ai.json   # Hasil scraping untuk topik AI
+ ┃ ┣ 📜scraping_hasil_cysec.json# Hasil scraping untuk topik Cyber Security
+ ┃ ┣ 📜scraping_hasil_is.json   # Hasil scraping untuk topik Information System
+ ┃ ┣ 📜scraping_hasil_ml.json   # Hasil scraping untuk topik Machine Learning
+ ┃ ┗ 📜seluruh_hasil.json.dvc   # Tracking DVC untuk seluruh_hasil.json
+ ┣ 📜.dockerignore              # File untuk mengabaikan file saat build Docker
+ ┣ 📜.dvcignore                 # File untuk mengabaikan file dalam proses DVC
+ ┣ 📜.gitignore                 # Mengabaikan file tertentu dari Git
+ ┣ 📜.gitattributes             # Aturan atribut Git (misal, CRLF handling, merge, dll)
+ ┣ 📜hasil_embed.txt           # Hasil embedding teks, kemungkinan dari model
+ ┣ 📜LICENSE                   # Lisensi proyek
  ┣ 📜docker-compose.yml   # Docker services config
  ┣ 📜tracking_mlflow.py   # MLflow tracking
  ┣ 📜scrapy.cfg           # Scrapy configuration
  ┣ 📜penjadwalan.sh       # Scheduling script
- ┗ 📜README.md
+ ┗ 📜README.md            # Dokumentasi proyek
 ```
 
 ## Fitur
@@ -84,7 +106,6 @@ Website : [PubMed](https://pubmed.ncbi.nlm.nih.gov/)
 - **Monitoring:**
   - Prometheus metrics collection
   - Grafana dashboards
-  - Real-time monitoring
   - Performance tracking
 
 ## Instalasi
@@ -115,9 +136,7 @@ docker-compose up -d
 ### API Scraping
 ```bash
 # Scrape artikel dengan keyword
-curl -X POST http://localhost:5000/scrape \
-  -H "Content-Type: application/json" \
-  -d '{"keyword": "machine learning", "max_pages": 10}'
+curl -X POST http://localhost:5001/api/preprocessed/training
 ```
 
 ### API Preprocessing
@@ -136,7 +155,6 @@ curl -X POST http://localhost:5001/preprocess \
   - Scraping statistics
 
 - **Grafana Dashboards:**
-  - Real-time monitoring
   - Performance metrics
   - System health
   - Custom visualizations
@@ -146,7 +164,7 @@ Proses pembersihan data dilakukan sebelum data disimpan:
 - **Clean Text:** Menghapus spasi berlebih, newline, dan karakter tidak relevan pada judul
 - **Clean Authors:** Menghapus tanda "et al.", ellipsis, dan pemisah seperti titik koma pada daftar penulis
 - **Parse Journal:** Memisahkan nama jurnal, tahun publikasi, dan kutipan lengkap menggunakan regex
-- **Topic Modeling:** Analisis topik dari artikel menggunakan LDA
+- **Topic Modeling:** Analisis topik dari artikel menggunakan BERTopic
 
 ## Docker Deployment
 Proyek menggunakan Docker Compose untuk mengelola multiple services:
