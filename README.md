@@ -11,7 +11,7 @@ Proyek ini bertujuan untuk mengumpulkan data judul Artikel dari situs web PubMed
 **Anggota Kelompok :**
 1. Agato Uria Oidamar Prawira - 225150407111062
 2. Ndaniel Mahulae	-	225150300111016
-3. Aracel Nestova Aprilyanto	- 225150200111054
+3. Aracel Nestova Aprilyanto	- 225150200111054 
 
 ## Daftar Isi
 - [Sumber Data](#sumber-data)
